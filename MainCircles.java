@@ -12,6 +12,9 @@ import java.awt.event.MouseListener;
 	 ** Реализовать по клику другой кнопки удаление кружков (никаких эррейЛист)
 * */
 
+
+
+
 public class MainCircles extends JFrame {
 
     private static final int POS_X = 600;
@@ -24,7 +27,6 @@ public class MainCircles extends JFrame {
 
     private Sprite[] sprites = new Sprite[MAX_SPRITE];
     private int spritesCount = 1;
-    private Background bg;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -42,7 +44,6 @@ public class MainCircles extends JFrame {
         GameCanvas gameCanvas = new GameCanvas(this);
         initApplication();
         add(gameCanvas, BorderLayout.CENTER);
-        Background bg = new Background();
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent me) {
@@ -78,12 +79,23 @@ public class MainCircles extends JFrame {
     }
 
     void onDrawFrame(GameCanvas canvas, Graphics g, float deltaTime) {
+//делаю через анонимный класс, по другому у меня не получается, я плохо разбираюсь в многопоточных приложениях
+// а отладка многопоточных приложений для меня темный лес.
+        Background bg = new Background(){
 
-//        bg.setBakground(canvas);
+            public void setBakground(GameCanvas canvas) {
+                i++;
+                if(i > 100){
+                    int a = (int) (Math.random() * 200);
+                    int b = (int) (System.currentTimeMillis() % 250);
+                    int c = (int) (Math.random() * 200);
+                    canvas.setBackground(new Color(a, b, c));
+                    i = 0;
+                }
+            }
+        };
 
-
-        canvas.setBackground(Color.green);
-
+        bg.setBakground(canvas);
         update(canvas, deltaTime);
         render(canvas, g);
     }
