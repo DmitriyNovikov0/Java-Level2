@@ -12,7 +12,9 @@ import java.awt.event.MouseListener;
 	 ** Реализовать по клику другой кнопки удаление кружков (никаких эррейЛист)
 * */
 
-
+/*
+не делается pull request
+ */
 
 
 public class MainCircles extends JFrame {
