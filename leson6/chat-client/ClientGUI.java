@@ -42,6 +42,18 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         });
     }
 
+
+    /*
+     * К сожалению нет возможности смотреть трансляции онлайн приходится пересматривать запись, честно не совсем понял задание
+     * Реализовать массовую рассылку сообщений с помощью Vector (он как ArrayList)
+     * вопросы по теме в основном у меня проблема с пониманием интерфейсов и как ими правильно пользоваться (если честно то и ООП в целом но тут практика нужно
+     * сложно перестроится после процедурного программирования - тяжело представить проект целиком реализованный в стиле ООП), ну а в остальном так более менее
+     * все понятно, интерфейсы подучу уже взял книгу Эккеля, в остальном стараюсь вникнуть и не упустить ничего
+     *
+     */
+
+
+
     private ClientGUI() {
         Thread.setDefaultUncaughtExceptionHandler(this);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -74,6 +86,7 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         panelBottom.add(btnDisconnect, BorderLayout.WEST);
         panelBottom.add(tfMessage, BorderLayout.CENTER);
         panelBottom.add(btnSend, BorderLayout.EAST);
+        panelBottom.setVisible(false);
 
         add(panelTop, BorderLayout.NORTH);
         add(scrollLog, BorderLayout.CENTER);
@@ -90,11 +103,6 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
             showException(e);
         }
     }
-
-    private void disconnect() {
-        socketThread.close();
-    }
-
 
     @Override
     public void uncaughtException(Thread t, Throwable e) {
@@ -113,8 +121,8 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         } else if (src == btnLogin) {
             connect();
         } else if (src == btnDisconnect){
-//
-            panelTop.setVisible(true);
+// странно вываливает ошибку INTERRUPTED while loading Image, но не всегда... со временим проблема так бы разобрался
+            socketThread.close();
 
         } else {
             throw new RuntimeException("Unknown source: " + src);
@@ -175,14 +183,16 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
     @Override
     public void onSocketThreadStop(SocketThread thread) {
         putLog("socket stop");
-
+        panelTop.setVisible(true);
+        panelBottom.setVisible(false);
     }
 
     @Override
     public void onSocketThreadReady(SocketThread thread, Socket socket) {
         putLog("socket ready");
-//не уверен праильно или нет, но сдесь прячу верхнюю панель, прячу тут что бы быть уверенным что соединение с сервером установленно и сокет готов
+//не уверен праильно или нет, но здесь прячу верхнюю панель, прячу тут что бы быть уверенным что соединение с сервером установленно и сокет готов
         panelTop.setVisible(false);
+        panelBottom.setVisible(true);
     }
 
     @Override
