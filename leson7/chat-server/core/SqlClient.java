@@ -1,4 +1,4 @@
-package ru.gb.j_two.chat.server.core;
+package leson7.chat.server.core;
 
 import java.sql.*;
 
@@ -10,7 +10,8 @@ public class SqlClient {
     synchronized static void connect() {
         try {
             Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:chat-server/chatDb.sqlite");
+//пришлось переписать строку соединения с БД
+            connection = DriverManager.getConnection("jdbc:sqlite:src/leson7/chat-server/chatDb.sqlite");
             statement = connection.createStatement();
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);

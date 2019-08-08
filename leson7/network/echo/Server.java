@@ -1,4 +1,4 @@
-package ru.gb.j_two.network.echo;
+package leson7.network.echo;
 
 import java.io.*;
 import java.net.ServerSocket;

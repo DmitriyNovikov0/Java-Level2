@@ -1,8 +1,8 @@
-package ru.gb.j_two.chat.client;
+package leson7.chat.client;
 
-import ru.gb.j_two.chat.common.Library;
-import ru.gb.j_two.network.SocketThread;
-import ru.gb.j_two.network.SocketThreadListener;
+import leson7.chat.common.Library;
+import leson7.network.SocketThread;
+import leson7.network.SocketThreadListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +11,9 @@ import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Calendar;
+
+import static leson7.chat.common.Library.*;
 
 /*
 1 ещё раз быстро пройтись по той части кода, которая отвечает за сетевое взаимодействие,
@@ -240,7 +243,26 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
 
     @Override
     public void onReceiveString(SocketThread thread, Socket socket, String value) {
-        putLog(value);
+        //разбиваем строку пришедшею от сервера, если есть DELIMITER работаем со строкой если нет просто пишем
+        if(value.indexOf(DELIMITER) > 0){
+            String[] arrStr = value.split(DELIMITER);
+            if(arrStr[0].equals(AUTH_ACCEPT)){
+                //что-то делаем при успешной авторизации пользователя
+
+            }
+            if(arrStr[0].equals(TYPE_BROADCAST)){
+                //глупый пример но тут можно реализовать любую логику
+                Calendar c=Calendar.getInstance();
+                c.setTimeInMillis(Long.valueOf(arrStr[1]));
+
+                putLog(c.get(Calendar.HOUR) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND) + " - " +  arrStr[3]);
+            }
+
+//            value
+        }
+        else{
+            putLog(value);
+        }
     }
 
     @Override

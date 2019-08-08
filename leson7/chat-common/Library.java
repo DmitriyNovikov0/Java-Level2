@@ -1,4 +1,4 @@
-package ru.gb.j_two.chat.common;
+package leson7.chat.common;
 
 public class Library {
     /*

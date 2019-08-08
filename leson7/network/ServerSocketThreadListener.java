@@ -1,4 +1,4 @@
-package ru.gb.j_two.network;
+package leson7.network;
 
 import java.net.ServerSocket;
 import java.net.Socket;

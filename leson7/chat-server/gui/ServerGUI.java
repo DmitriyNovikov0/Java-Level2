@@ -1,7 +1,7 @@
-package ru.gb.j_two.chat.server.gui;
+package leson7.chat.server.gui;
 
-import ru.gb.j_two.chat.server.core.ChatServer;
-import ru.gb.j_two.chat.server.core.ChatServerListener;
+import leson7.chat.server.core.ChatServer;
+import leson7.chat.server.core.ChatServerListener;
 
 import javax.swing.*;
 import java.awt.*;

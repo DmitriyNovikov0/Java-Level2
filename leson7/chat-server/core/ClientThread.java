@@ -1,8 +1,8 @@
-package ru.gb.j_two.chat.server.core;
+package leson7.chat.server.core;
 
-import ru.gb.j_two.chat.common.Library;
-import ru.gb.j_two.network.SocketThread;
-import ru.gb.j_two.network.SocketThreadListener;
+import leson7.chat.common.Library;
+import leson7.network.SocketThread;
+import leson7.network.SocketThreadListener;
 
 import java.net.Socket;
 
