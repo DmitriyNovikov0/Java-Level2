@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.Socket;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class ClientGUI extends JFrame implements ActionListener, Thread.UncaughtExceptionHandler, SocketThreadListener {
     private static final int WIDTH = 400;
@@ -32,6 +34,7 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
     private final JList<String> userList = new JList<>();
     private boolean shownIoErrors = false;
     private SocketThread socketThread;
+    private final DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {

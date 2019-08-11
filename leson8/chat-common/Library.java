@@ -1,13 +1,14 @@
-package leson7.chat.common;
+package leson8.chat.common;
 
 public class Library {
     /*
-     * /auth_request§login§password
-     * /auth_accept§nickname
-     * /auth_error
-     * /msg_format_error
-     * /broadcast§msg
-     * */
+    * /auth_request§login§password
+    * /auth_accept§nickname
+    *
+    * /auth_error
+    * /msg_format_error
+    * /broadcast§msg
+    * */
     public static final String DELIMITER = "§";
     public static final String AUTH_REQUEST = "/auth_request";
     public static final String AUTH_ACCEPT = "/auth_accept";

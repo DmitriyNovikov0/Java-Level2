@@ -1,8 +1,7 @@
-package leson7.chat.server.gui;
+package leson8.chat.server.gui;
 
-import leson7.chat.server.core.ChatServer;
-import leson7.chat.server.core.ChatServerListener;
-import leson7.chat.server.core.SqlClient;
+import leson8.chat.server.core.ChatServer;
+import leson8.chat.server.core.ChatServerListener;
 
 import javax.swing.*;
 import java.awt.*;

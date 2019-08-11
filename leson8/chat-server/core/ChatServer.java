@@ -1,13 +1,13 @@
-package leson7.chat.server.core;
+package leson8.chat.server.core;
 
-import leson7.chat.common.Library;
-import leson7.network.ServerSocketThread;
-import leson7.network.ServerSocketThreadListener;
-import leson7.network.SocketThread;
-import leson7.network.SocketThreadListener;
-import leson7.chat.server.core.ChatServerListener;
-import leson7.chat.server.core.SqlClient;
-import leson7.chat.server.core.ClientThread;
+import leson8.chat.common.Library;
+import leson8.network.ServerSocketThread;
+import leson8.network.ServerSocketThreadListener;
+import leson8.network.SocketThread;
+import leson8.network.SocketThreadListener;
+import leson8.chat.server.core.SqlClient;
+import leson8.chat.server.core.ClientThread;
+import leson8.chat.server.core.ChatServerListener;
 
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -19,7 +19,7 @@ public class ChatServer implements ServerSocketThreadListener, SocketThreadListe
 
     private ServerSocketThread server;
     private final DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss: ");
-    private ChatServerListener listener;
+    private leson8.chat.server.core.ChatServerListener listener;
     private Vector<SocketThread> clients = new Vector<>();
 
     public ChatServer(ChatServerListener listener){

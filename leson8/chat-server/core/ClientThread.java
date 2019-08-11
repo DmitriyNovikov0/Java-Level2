@@ -1,8 +1,8 @@
-package leson7.chat.server.core;
+package leson8.chat.server.core;
 
-import leson7.chat.common.Library;
-import leson7.network.SocketThread;
-import leson7.network.SocketThreadListener;
+import leson8.chat.common.Library;
+import leson8.network.SocketThread;
+import leson8.network.SocketThreadListener;
 
 import java.net.Socket;
 
